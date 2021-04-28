@@ -1,0 +1,50 @@
+body{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.header__title{
+    font-weight: bolder !important;
+}
+
+.over-2{
+    color: #214181 !important;
+}
+
+.over-2:hover{
+    color: #214181 !important;
+}
+
+
+
+.bg-over-2{
+    background: transparent !important;
+    border: 0 !important;
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+}
+
+.header__span{
+    color: #39546d !important;
+    font-weight: 300 !important;
+}
+
+
+.bullets img {
+    align-items: center;
+    margin-right: 2rem;
+  }
+
+
+.bullets__parag{
+    color: #9cb6eb !important;
+    text-align: left;
+}
+
+.customer__support__white{
+    color: #FFFFFF !important
+}
+
+.fa-arrow-right{
+    margin-right: 1rem;
+    font-size: 1rem !important;
+}
