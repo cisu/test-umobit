@@ -1,5 +1,0 @@
-
-
-Replace
-
-ion-ios-search   -----> fas fa-search fa-2x
