@@ -18,12 +18,8 @@ $(function() {
     programs();
     parallax();
     nyxterini();
-    // complaintsForm();
-    // customerForm();
-    // customerSupportForm();
     billAnalysis();
     rewardsMargin();
-    // rewardsHeight();
     remodal();
     click2Call();
     header();
@@ -50,7 +46,6 @@ $(window).resize(function() {
     SetUpGridCols5();
     SetUpGridCols6();
     rewardsMargin();
-    // rewardsHeight();
     
 })
 
@@ -62,13 +57,11 @@ $(window).scroll(function() {
 }) 
 
 $(window).on("load",function(){
-    // rewardMaxHeight();
     gridCounter();
 
     $(".loader").fadeOut(function() {        
         energyAnimations();
     });
-    // rewardsHeight(); 
 
 });
 
@@ -101,10 +94,7 @@ function mScrollbar(element) {
 }
 
 function syncCharts() {
-        /**
-     * In order to synchronize tooltips and crosshairs, override the
-     * built-in events with handlers defined on the parent element.
-     */
+    
     $('#stock-chart-small').bind('mousemove touchmove touchstart', function (e) {
         var chart,
             point,
@@ -113,40 +103,35 @@ function syncCharts() {
 
         for (i = 0; i < Highcharts.charts.length; i = i + 1) {
             chart = Highcharts.charts[i];
-            event = chart.pointer.normalize(e.originalEvent); // Find coordinates within the chart
-            point = chart.series[0].searchPoint(event, true); // Get the hovered point
+            event = chart.pointer.normalize(e.originalEvent); 
+            point = chart.series[0].searchPoint(event, true); 
 
             if (point) {
                 point.highlight(e);
             }
         }
     });
-    /**
-     * Override the reset function, we don't need to hide the tooltips and crosshairs.
-     */
+    
     Highcharts.Pointer.prototype.reset = function () {
         return undefined;
     };
 
-    /**
-     * Highlight a point by showing tooltip, setting hover state and draw crosshair
-     */
+    
     Highcharts.Point.prototype.highlight = function (event) {
-        this.onMouseOver(); // Show the hover marker
-        this.series.chart.tooltip.refresh(this); // Show the tooltip
-        this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
+        this.onMouseOver(); 
+        this.series.chart.tooltip.refresh(this); 
+        this.series.chart.xAxis[0].drawCrosshair(event, this); 
     };
 
-    /**
-     * Synchronize zooming through the setExtremes event handler.
-     */
+    
+     
     function syncExtremes(e) {
         var thisChart = this.chart;
 
-        if (e.trigger !== 'syncExtremes') { // Prevent feedback loop
+        if (e.trigger !== 'syncExtremes') { 
             Highcharts.each(Highcharts.charts, function (chart) {
                 if (chart !== thisChart) {
-                    if (chart.xAxis[0].setExtremes) { // It is null while updating
+                    if (chart.xAxis[0].setExtremes) { 
                         chart.xAxis[0].setExtremes(e.min, e.max, undefined, false, { trigger: 'syncExtremes' });
                     }
                 }
@@ -165,13 +150,13 @@ function syncCharts() {
 
         for (var i = 0; i < dataLength; i += 1) {
             prices.push([
-                parseInt(rawData[i].date), //date
-                parseFloat(rawData[i].a), //close
+                parseInt(rawData[i].date), 
+                parseFloat(rawData[i].a), 
             ]);
 
             volume.push([
-                parseInt(rawData[i].date), //date
-                parseInt(rawData[i].b), //close
+                parseInt(rawData[i].date), 
+                parseInt(rawData[i].b), 
             ]);
         }
 
@@ -179,7 +164,7 @@ function syncCharts() {
         .appendTo('#stock-chart-small')
         .highcharts({
             chart: {
-                marginLeft: 40, // Keep all charts left aligned
+                marginLeft: 40, 
                 spacingTop: 20,
                 spacingBottom: 20,
                 zoomType: 'x',
@@ -203,7 +188,7 @@ function syncCharts() {
             },
             xAxis: {
                 type: 'datetime',
-                dateTimeLabelFormats: { // don't display the dummy year
+                dateTimeLabelFormats: { 
                     month: '%e. %b %y',
                     year: '%b %Y'
                 },
@@ -244,7 +229,7 @@ function syncCharts() {
         .appendTo('#stock-chart-small')
         .highcharts({
             chart: {
-                marginLeft: 40, // Keep all charts left aligned
+                marginLeft: 40, 
                 spacingTop: 20,
                 spacingBottom: 20,
                 zoomType: 'x',
@@ -268,7 +253,7 @@ function syncCharts() {
             },
             xAxis: {
                 type: 'datetime',
-                dateTimeLabelFormats: { // don't display the dummy year
+                dateTimeLabelFormats: { 
                     month: '%e. %b %y',
                     year: '%b %Y'
                 },
@@ -841,21 +826,6 @@ function menu() {
         $(".search-menu").slideUp();
     })
 
-    // var dropDownMenu;
-
-    // $(".main-menu .nav-item.dropdown, .sub-menu .nav-item.dropdown").mouseenter(function() {
-    //     dropDownMenu = $(this).children(".dropdown-menu");
-
-    //     if(dropDownMenu.length) {
-    //         dropDownMenu.stop().slideDown(500);
-    //     }
-    // })
-
-    // $(".main-menu .nav-item.dropdown, .sub-menu .nav-item.dropdown").mouseleave(function() {
-    //     if(dropDownMenu.length) {
-    //         dropDownMenu.stop().slideUp(500);
-    //     }
-    // })
 }
 
 function header() {
@@ -978,25 +948,7 @@ function rewardsMargin() {
 
 }
 
-// function rewardsHeight() {
 
-//     $(".reward").each(function() {
-
-//         var img;
-
-//         $(this).find(".reward-img").each(function() {
-//             img = $(this).actual('height');
-//         })
-       
-//        if($(this).find(".reward-btn").length) {
-//             $(this).css("min-height", img + 44 + "px");
-//         } else {
-//             $(this).css("min-height", img + 80 + "px");
-//         }  
-        
-//     })
-    
-// }
 
 function count(el1,el2,dec) {
     var share = el1;
@@ -1066,18 +1018,14 @@ function lineChart() {
 
         for (var i = 0; i < dataLength; i += 1) {
             prices.push([
-                data[i][0], //date
-                data[i][1], //close
+                data[i][0], 
+                data[i][1], 
             ]);
 
-            //prices2.push([
-            //    data[i][0], //date
-            //    data[i][3], //close
-            //]);
-
+           
             volume.push([
-                data[i][0], //date
-                data[i][2], //close
+                data[i][0], 
+                data[i][2], 
             ]);
 
             if (max < data[i][1]) {
@@ -1121,7 +1069,7 @@ function lineChart() {
                         fontWeight: '300'
                     }
                 },
-                dateTimeLabelFormats: { // don't display the dummy year
+                dateTimeLabelFormats: { 
                     month: '%e. %b %y',
                     year: '%b %Y'
                 },
@@ -1130,7 +1078,7 @@ function lineChart() {
                 {
                     labels: {
                         align: "right",
-                        x: 35, //-3,
+                        x: 35, 
                         format: "{value:.2f}",
                         style: {
                             fontSize: '10px',
@@ -1139,7 +1087,7 @@ function lineChart() {
                         }
                     },
                     title: {
-                        text: ''//lang === "el" ? "Κλείσιμο" : "Closure"
+                        text: '',
                     },
                     height: "100%",
                     lineWidth: 1,
